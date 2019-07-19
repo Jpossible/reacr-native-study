@@ -6,6 +6,8 @@ import TabNavigator from 'react-native-tab-navigator'
 import HomeView from './components/homeView'
 import ProfileView from './components/profileView'
 import Hot from './components/hot'
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 export default class HomePage extends Component{
     // constructor一般推荐自己复写一次
@@ -42,8 +44,8 @@ export default class HomePage extends Component{
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'hot'}
                         title="Hot"
-                        renderIcon={() => <Image style={stylelist.hicon} source={require('./img/twitter.png')} />}
-                        renderSelectedIcon={() => <Image style={stylelist.hicon} source={require('./img/twitter-a.png')} />}
+                        renderIcon={() => <Icon name="user-o" size={26} color="#666" />}
+                        renderSelectedIcon={() => <Icon name="user" size={26} color="#666" />}
                         onPress={() => this.setState({ selectedTab: 'hot' })}
                     >
                         <Hot></Hot>
