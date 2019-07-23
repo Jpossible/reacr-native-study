@@ -1,6 +1,7 @@
 import React from 'react'
-import { View, Text, TextInput, Image, Button, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, Text, TextInput, Image, Button, ActivityIndicator, StyleSheet,TouchableHighlight } from 'react-native'
 import Swiper from 'react-native-swiper'
+import { Actions } from 'react-native-router-flux'
 
 export default class HomeView extends React.Component{
     constructor(props){
@@ -11,13 +12,43 @@ export default class HomeView extends React.Component{
     }
     render(): React.ReactNode {
         return (
-            <View style={{backgroundColor:'#666',height:200}}>
-                <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
-                    {this.state.SwiperData.map((item,i)=><View style={styles.slide1} key={i}>
-                        <Image source={require('../img/9.jpg')} resizeMode="center"/>
-                        <Text style={styles.text}>{item.proImg}</Text>
-                    </View>)}
-                </Swiper>
+            <View>
+                <View style={{backgroundColor:'#666',height:200}}>
+                    <Swiper style={styles.wrapper} showsButtons={true} autoplay={true}>
+                        {this.state.SwiperData.map((item,i)=><View style={styles.slide1} key={i}>
+                            <Image source={require('../img/9.jpg')} resizeMode="center"/>
+                            <Text style={styles.text}>{item.proImg}</Text>
+                        </View>)}
+                    </Swiper>
+                </View>
+                <View style={{flexDirection: 'row',flexWrap: 'wrap'}}>
+                    <TouchableHighlight style={styles.box} onPress={this.gotoPage.bind(this)}>
+                        <View>
+                            <Image source={require('../img/foot.png')} resizeMode="center"/>
+                            <Text>BaiDu</Text>
+                        </View>
+                    </TouchableHighlight>
+                    <View style={styles.box}>
+                        <Image source={require('../img/foot.png')} resizeMode="center"/>
+                        <Text>BaiDu</Text>
+                    </View>
+                    <View style={styles.box}>
+                        <Image source={require('../img/foot.png')} resizeMode="center"/>
+                        <Text>BaiDu</Text>
+                    </View>
+                    <View style={styles.box}>
+                        <Image source={require('../img/foot.png')} resizeMode="center"/>
+                        <Text>BaiDu</Text>
+                    </View>
+                    <View style={styles.box}>
+                        <Image source={require('../img/foot.png')} resizeMode="center"/>
+                        <Text>BaiDu</Text>
+                    </View>
+                    <View style={styles.box}>
+                        <Image source={require('../img/foot.png')} resizeMode="center"/>
+                        <Text>BaiDu</Text>
+                    </View>
+                </View>
             </View>
         )
     }
@@ -34,6 +65,10 @@ export default class HomeView extends React.Component{
                 console.warn('请求地址出错，可能使用了本地地址')
                 console.warn(e)
         })
+    }
+
+    gotoPage() {
+        Actions.subPage({id:10})
     }
 }
 
@@ -62,5 +97,13 @@ const styles = StyleSheet.create({
         color: 'red',
         fontSize: 30,
         fontWeight: 'bold'
+    },
+    box: {
+        width: '33.33%',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderRightWidth: 1,
+        borderColor: "#dadada",
     }
 })
